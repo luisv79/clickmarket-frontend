@@ -1,1 +1,21 @@
+
 @import "tailwindcss";
+
+
+ /* Estilo para la barra de scroll horizontal para que sea menos prominente */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .borde{
+            border: 1px solid #a6a5a5; /* Tailwind's gray-200 */
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+        }
+
+        a.active {
+  font-weight: bold;
+}
