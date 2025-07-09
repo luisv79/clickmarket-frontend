@@ -25,68 +25,85 @@ function Navbar() {
     const openCart= () => setIsOpenCart(true);
     const closenCart = () => setIsOpenCart(false);
 
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setDropdownOpen(!dropdownOpen);
+    };
+
     return (
         <>
-         <div className="font-sans">
+         <div className="font-sans m-auto w-[375px]">
       {/* Panel lateral menu */}
       <div
-        className={`fixed top-0 left-0 h-[250px] bg-[#111] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
-          isOpen ? 'w-[250px]' : 'w-0'
+        className={` fixed top-0 h-[250px] bg-[#fff] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
+          isOpen ? 'w-[365px]' : 'w-0'
         }`}
       >
         <button
-          className="absolute top-0 right-6 text-4xl text-white"
+          className="absolute top-0 right-6 text-4xl"
           onClick={closeNavbar}
         >
           ×
         </button>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          About
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">
+          Inicio
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          Services
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">
+          Notificaciones
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">
           Clients
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
+        <a href="#" className={`dropdown-btn block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300 ${dropdownOpen ? 'active' : ''}`} onClick={toggleDropdown}>
+          Dropdown
+        </a>
+      <div
+        className=""
+        style={{ display: dropdownOpen ? 'grid' : 'none' }}
+      >
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">Link 1</a>
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">Link 2</a>
+        <a href="#" className="block  hover:bg-gray-100 px-8 py-2 transition-colors duration-300">Link 3</a>
+      </div>
+        <a href="#" className="block hover:hover:bg-gray-100 px-8 py-2 transition-colors duration-300">
           Contact
         </a>
       </div>
 {/* Panel lateral categoria */}
        <div
-        className={`fixed top-0 left-0 h-[250px] bg-[#111] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
-          isOpenTwo ? 'w-[250px]' : 'w-0'
+        className={`fixed top-0 h-[250px] bg-[#fff] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
+          isOpenTwo ? 'w-[365px]' : 'w-0'
         }`}
       >
         <button
-          className="absolute top-0 right-6 text-4xl text-white"
+          className="absolute top-0 right-6 text-4xl"
           onClick={closenCategori}
         >
           ×
         </button>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          Closes
+        <a href="#" className="block  hover:bg-gray-100 text-2xl px-8 py-2 transition-colors duration-300">
+          Tecnologia
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          Shoes
+        <a href="#" className="block  hover:bg-gray-100 text-2xl px-8 py-2 transition-colors duration-300">
+          Electrodomesticos
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          Pets
+        <a href="#" className="block  hover:bg-gray-100 text-2xl px-8 py-2 transition-colors duration-300">
+          Hogar y muebles
         </a>
-        <a href="#" className="block text-[#818181] hover:text-white text-2xl px-8 py-2 transition-colors duration-300">
-          kitchen
+        <a href="#" className="block  hover:bg-gray-100 text-2xl px-8 py-2 transition-colors duration-300">
+          Belleza y cuidado personal
         </a>
       </div>
 
       {/* Panel lateral buscar */}
        <div
-        className={`fixed top-0 left-0 h-[250px] bg-[#111] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
-          isOpenSearh ? 'w-[250px]' : 'w-0'
+        className={`fixed top-0 h-[250px] bg-[#111] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
+          isOpenSearh ? 'w-[365px]' : 'w-0'
         }`}
       >
         <button
-          className="absolute top-0 right-6 text-4xl text-white"
+          className="absolute top-0 right-6 text-4xl"
           onClick={closenSearch}
         >
           ×
@@ -96,7 +113,7 @@ function Navbar() {
 
       {/* Panel lateral Carrito */}
        <div
-        className={`fixed top-0 left-0 h-auto bg-[#fff] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
+        className={`fixed top-0 h-auto bg-[#fff] overflow-x-hidden pt-16 transition-all duration-500 z-50 ${
           isOpenCart ? 'w-[365px]' : 'w-0'
         }`}
       >
@@ -111,8 +128,8 @@ function Navbar() {
 
         </div>
        <div className="flex justify-between p-4">
-            <Link to="/cart"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Carrito</button></Link>
-            <Link to="/checkout"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Continuar pago</button></Link>
+            <Link to="/cart"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Carrito</button></Link>
+            <Link to="/checkout"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Continuar pago</button></Link>
             </div>
       </div>
 
